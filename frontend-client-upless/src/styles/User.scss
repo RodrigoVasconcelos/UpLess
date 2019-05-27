@@ -1,0 +1,63 @@
+.user-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  
+  border-bottom: 1px solid lightgray;
+  
+  text-align: left;
+  
+  height: 120px;
+  padding: 19px 20px 16px;
+}
+
+.user-discription {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  
+}
+
+
+.user-discription h2 {
+  margin: 0;
+}
+
+.user-discription p {
+  margin: 0;
+}
+
+.edit-img {
+  width: 30px;
+}
+
+.profile-pic {
+  background-color: $up-blue;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  border-bottom-left-radius: 50%;
+  width: 130px;
+  height: 130px;
+}
+
+.button-add {
+  align-items: center;
+  bottom: 0;
+  display: fleX;
+  justify-content: space-around;
+  position: fixed;
+  
+  margin: 0 auto 65px;
+  width: 80px;
+}
+
+.button-add a {
+  text-decoration: none;
+}
+.button-add img {
+  margin: auto;
+
+  width: 100%;
+}

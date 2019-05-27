@@ -71,7 +71,6 @@ Material Details:
 | `get`    | `/search-material`          | SearchMaterialCpmponent            | public          | form with families and types of materials |
 | `post`   | `/search-material:id`       | MaterialAPIDetailComponent         | public          | the users selects a family and a type of material, it will go for the material page from the API |
 | `get`    | `**`                        | NotFoundPageComponent              | public          |
-|----------|-----------------------------|------------------------------------|-----------------|---------------------------------|
 
 
 

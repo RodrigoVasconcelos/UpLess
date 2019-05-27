@@ -1,0 +1,38 @@
+$up-blue: rgb(25, 84, 103);
+$font-grey: rgb(26, 26, 26);
+$font-ligthgrey: rgb(100, 100, 100);
+@import './Homepage.scss';
+@import './User.scss';
+@import './AddMaterial.scss';
+@import './Navbar.scss';
+@import './Footer.scss';
+
+body {
+  margin: 0;
+  padding: 0;
+
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+}
+
+button {
+  background-color: transparent;
+  border: 0px;
+}
+
+.submit-big-button {
+  align-items: center;
+  top: 0;
+  display: fleX;
+  justify-content: space-around;
+  position: fixed;
+  
+  margin: 65px auto 0;
+  width: 120px;
+}
+
+.submit-big-button img {
+  margin: auto;
+
+  width: 100%;
+}
