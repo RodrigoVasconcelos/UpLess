@@ -16,18 +16,22 @@
   justify-content: flex-start;
   flex-direction: column;
   
+  width: 200px;
 }
 
 
-.user-discription h2 {
+.user-discription * {
   margin: 0;
 }
 
-.user-discription p {
+.user-discription button {
   margin: 0;
+  padding: 0;
+  text-align: left;
 }
 
 .edit-img {
+  justify-content: flex-start;
   width: 30px;
 }
 
@@ -40,24 +44,4 @@
   border-bottom-left-radius: 50%;
   width: 130px;
   height: 130px;
-}
-
-.button-add {
-  align-items: center;
-  bottom: 0;
-  display: fleX;
-  justify-content: space-around;
-  position: fixed;
-  
-  margin: 0 auto 65px;
-  width: 80px;
-}
-
-.button-add a {
-  text-decoration: none;
-}
-.button-add img {
-  margin: auto;
-
-  width: 100%;
 }

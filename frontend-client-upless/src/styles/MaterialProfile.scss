@@ -1,0 +1,41 @@
+.material-profile{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .material-profile-pic {
+    background-color:  $up-blue;
+    
+    margin: 30px auto 25px;
+    height: 250px;
+    width: 250px;
+  }
+
+  h3 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .div-description {
+    color: $font-ligthgrey;
+    padding: 0 30px 20px;
+    text-align: left;
+  }
+  .div-description *{
+  }
+  .amount {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin: 0 0 4px;
+  }
+  .price {
+    margin: 0 0 10px;
+  }
+  
+  .description {
+    color: $font-grey;
+    font-size: 1.2rem;
+    margin: 0 0 5px;
+  }
+}

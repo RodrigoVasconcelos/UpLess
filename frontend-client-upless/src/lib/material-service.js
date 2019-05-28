@@ -15,6 +15,11 @@ class Material {
       .then(({ data }) => data);
   }
   
+  getMaterial() {
+    return this.material.get('/:id')
+      .then( ({data}) => data);
+  }
+
   update(material) {
     const { name, description, amount, price, photo } = material;
 
@@ -31,8 +36,9 @@ class Material {
   }
 
   imageUploadMaterial (file) {
-    return this.material.post('/photo', file)
-    .then(({data}) => data)
+    return this.material
+      .post('/photo', file)
+      .then(({data}) => data)
   }
 
 }

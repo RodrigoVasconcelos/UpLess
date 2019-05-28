@@ -41,15 +41,15 @@ class homePage extends Component {
           {
             this.state.signup 
             ? <Signup  /> 
-            : <button type="button" className="button-homepage" onClick={this.signupMenu}>sign up</button>
+            : <button type="button" className="blue-button" onClick={this.signupMenu}>sign up</button>
            
           }
           {
             this.state.login 
             ? <Login  /> 
-            :<button type="button" className="button-homepage" onClick={this.loginMenu}>log in</button>
+            :<button type="button" className="blue-button" onClick={this.loginMenu}>log in</button>
           }
-          <button className="button-homepage"><Link to="/"> facebook </Link></button>
+          <button className="facebook blue-button"><Link to="/"> facebook </Link></button>
         </div>
       </div>
     );

@@ -28,10 +28,9 @@ class Signup extends Component {
     const file = event.target.files[0];
     const uploadData = new FormData()
     uploadData.append('photo', file)
-    // console.log(this.props.imageUpload)
-    this.props.imageUpload(uploadData)
+    console.log(uploadData);
+    this.props.imageUpload(uploadData,console.log('heyyyyyyyyy', uploadData))
     .then((pictureUrl) => {
-      console.log(pictureUrl)
       this.setState({
         pictureUrl,
         disable: false,
@@ -51,7 +50,7 @@ class Signup extends Component {
             name="username"
             value={username}
             onChange={this.handleChange}
-            className="button-sinlog"
+            className="grey-button"
             placeholder="name"
           />
           <input
@@ -59,7 +58,7 @@ class Signup extends Component {
             name="password"
             value={password}
             onChange={this.handleChange}
-            className="button-sinlog"
+            className="grey-button"
             placeholder="password"
           />
           <input
@@ -67,7 +66,7 @@ class Signup extends Component {
             name="email"
             value={email}
             onChange={this.handleChange}
-            className="button-sinlog"
+            className="grey-button"
             placeholder="email"
           />
           <input
@@ -75,13 +74,13 @@ class Signup extends Component {
             name="description"
             value={description}
             onChange={this.handleChange}
-            className="button-sinlog"
+            className="grey-button"
             placeholder="about you"
           />
 
           <input type="file" onChange={this.fileOnchange}></input>
           {disable ? <input type="submit" disabled></input>: 
-          <input type="submit" value="Signup" className="button-homepage" placeholder="sign up"/>
+          <input type="submit" value="Signup" className="blue-button" placeholder="sign up"/>
           }
 
         </form>

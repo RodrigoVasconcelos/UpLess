@@ -30,7 +30,7 @@ class Login extends Component {
             name="username"
             value={username}
             onChange={this.handleChange}
-            className="button-sinlog"
+            className="grey-button"
             placeholder="name"
           />
           <input
@@ -38,10 +38,10 @@ class Login extends Component {
             name="password"
             value={password}
             onChange={this.handleChange}
-            className="button-sinlog"
+            className="grey-button"
             placeholder="password"
           />
-          <input input type="submit" value="login" className="button-homepage"/>
+          <input input type="submit" value="login" className="blue-button"/>
 
         </form>
 

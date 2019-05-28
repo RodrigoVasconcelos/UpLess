@@ -4,7 +4,7 @@ import { withAuth } from "../../lib/AuthProvider";
 import material from '../../lib/material-service'
 import icon15 from './../../images/icon-15.png'
 
-class AddMaterial extends Component {
+class EditMaterial extends Component {
   state = {
     name: "",
     description: "",
@@ -87,7 +87,7 @@ class AddMaterial extends Component {
 
           <input type="file" onChange={this.fileOnchange}></input>
           {disable ? <input type="submit" disabled></input>: 
-          <button type="submit" value="addMaterial" className="submit-big-button" ><img src={icon15} alt=""/></button>
+          <button type="submit" value="addMaterial" className="blue-button" >Edit</button>
 
           }
 
@@ -97,4 +97,4 @@ class AddMaterial extends Component {
   }
 }
 
-export default withAuth(AddMaterial);
+export default withAuth(EditMaterial);

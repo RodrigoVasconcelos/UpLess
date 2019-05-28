@@ -57,18 +57,6 @@ class AuthProvider extends Component {
           isLoading: false
         });
       });
-    material
-      .getAll()
-      .then(material => {
-        this.setState({
-          material,
-        });
-      })
-      .catch(() => {
-        this.setState({
-          material: null,
-        });
-      });
   }
 
   signup = user => {
@@ -113,9 +101,7 @@ class AuthProvider extends Component {
       .catch(() => {});
   };
 
-
   imageUpload = (file) => {
-    console.log(auth)
     return auth.imageUpload(file)
   }
 
