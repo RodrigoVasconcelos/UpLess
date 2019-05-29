@@ -18,6 +18,7 @@ export const withAuth = Comp => {
               <Comp
                 login={authStore.login}
                 signup={authStore.signup}
+                update={authStore.update}
                 user={authStore.user}
                 logout={authStore.logout}
                 isLoggedin={authStore.isLoggedin}
@@ -76,6 +77,21 @@ class AuthProvider extends Component {
       });
   };
 
+  update = user => {
+    const { username, password, description, email, pictureUrl } = user;
+    auth
+      .update({ username, password, description, email, pictureUrl })
+      .then(user => {
+        this.setState({
+          user
+        });
+      })
+      .catch(({ response: { data: error } }) => {
+        this.setState({
+          message: error.statusMessage
+        });
+      });}
+
   login = user => {
     const { username, password } = user;
     auth
@@ -117,6 +133,7 @@ class AuthProvider extends Component {
           login: this.login,
           logout: this.logout,
           signup: this.signup,
+          update: this.update,
           imageUpload: this.imageUpload,
         }}
       >

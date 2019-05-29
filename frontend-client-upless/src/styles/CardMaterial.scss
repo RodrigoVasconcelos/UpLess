@@ -1,0 +1,58 @@
+.material-card {
+  display: flex;
+  flex-direction: row;
+  
+  text-align: left;
+
+  margin: 0px;
+  padding: 10px 15px;
+  
+  .material-img-div {
+    background-color: $up-blue;
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+    border-radius: 1px;
+    margin-right: 10px; 
+    
+    width: 85px;
+    height: 85px;
+  }
+  
+  .material-description-div {
+    width: 70vw;
+  }
+
+  h4 {
+    font-size: 1.2rem;
+    color: $font-grey;
+    margin: 0 0 3px;;
+  } 
+  
+  p {
+    margin: 0;
+    color: $font-ligthgrey;
+  }
+  
+  .amount {
+    font-size: 0.9rem;
+  }
+
+  .price {
+    text-align: right;
+    position: relative;
+    align-content: flex-end;
+    bottom: 0;
+  }
+
+  .description {
+    color: $font-grey;
+    font-size: 1.1rem;
+  }
+
+}
+  hr {
+    border: 0;
+    border-bottom: 1px solid lightgray;
+    margin: 0 25px;
+  }

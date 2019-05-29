@@ -3,13 +3,17 @@
 $up-blue: rgb(25, 84, 103);
 $font-grey: rgb(45, 45, 45);
 $font-ligthgrey: rgb(100, 100, 100);
+$grey-line:1px solid lightgray;
+$shadow:0px 7px 12px -9px rgba(148,148,148,1);
 @import './Homepage.scss';
 @import './User.scss';
-@import './AddMaterial.scss';
+@import './CardMaterial.scss';
 @import './Navbar.scss';
 @import './Footer.scss';
 @import './EditLogout.scss';
 @import './MaterialProfile.scss';
+@import './AddMaterial.scss';
+
 
 body {
   margin: 0;
@@ -28,21 +32,13 @@ a {
   text-decoration: none
 }
 
-.submit-big-button {
-  align-items: center;
-  top: 0;
-  display: fleX;
-  justify-content: space-around;
-  position: fixed;
-  
-  margin: 65px auto 0;
-  width: 120px;
-}
+
 
 .blue-button {
   background-color: rgb(25, 84, 103);
   border-radius: 13px;
   border: 0;
+  box-shadow: $shadow;
 
   color: white;
   font-weight: bold;
@@ -52,28 +48,28 @@ a {
   width: 60%;
 
   margin: 10px;
-}
-
-
-.submit-big-button img {
-  margin: auto;
-
-  width: 100%;
+  
 }
 
 .grey-button {
   background-color: rgb(245, 245, 245);
   border-radius: 13px;
   border: 1px solid darkgray;
-
+  box-shadow: $shadow;
+  
   color: rgb(80, 80, 80);
   font-size: 1rem;
   text-align: center;
-
+  
   height: 30px;
   width: 60%;
-
+  
   margin: 10px;
+}
+
+select.grey-button {
+  padding-left: 20px;
+  height: 34px !important;
 }
 
 .grey-button a, .blue-button a {
@@ -92,6 +88,7 @@ a {
   justify-content: center;
   position: fixed;
   bottom: 70px;
+  box-shadow: $shadow;
 
   margin: 0 auto;
 }
@@ -108,6 +105,7 @@ a {
 :-moz-placeholder { /* Firefox 18- */
   color: rgb(80, 80, 80);
 }
+
 //BUTTON ADD
 .button-add {
   align-self: center;
@@ -115,7 +113,7 @@ a {
   display: flex;
   justify-content: space-around;
   position: fixed;
-  
+
   margin: 0 auto 65px;
   width: 100vw;
 }
@@ -123,8 +121,36 @@ a {
 .button-add a {
   text-decoration: none;
 }
+
 .button-add img {
   margin: auto;
 
   width: 80px;
+}
+
+.submit-big-button {
+  align-items: center;
+  top: 0;
+  display: flex;
+  justify-content: space-around;
+  position: fixed;
+  
+  
+  margin: 80px auto 0;
+  width: 100vw;
+}
+
+.submit-big-button button{
+  width: 150px;
+}
+
+.submit-big-button a {
+  margin: auto;
+
+}
+
+.submit-big-button img {
+  margin: auto;
+
+  width: 100%;
 }

@@ -3,7 +3,8 @@ import axios from "axios";
 class Material {
   constructor() {
     this.material = axios.create({
-      baseURL: "http://localhost:5000/material",
+      // baseURL: "http://localhost:5000/material",
+      baseURL: `${process.env.REACT_APP_API_URL}/material`,
       withCredentials: true
     });
   }
@@ -15,23 +16,23 @@ class Material {
       .then(({ data }) => data);
   }
   
-  getMaterial() {
-    return this.material.get('/:id')
+  getMaterial(id) {
+    return this.material.get(`/${id}`)
       .then( ({data}) => data);
   }
 
   update(material) {
-    const { name, description, amount, price, photo } = material;
+    const { name, description, amount, price, photo, category } = material;
 
     return this.material
-      .put('/:id/edit', { name, description, amount, price, photo })
+      .put('/:id/edit', { name, description, amount, price, photo, category })
       .then( ({data}) => data);
   }
 
   addMaterial(material) {
-    const { name, description, amount, price, photo } = material;
+    const { name, description, amount, price, photo, category } = material;
     return this.material
-      .post("/add-material", { name, description, amount, price, photo })
+      .post("/add-material", { name, description, amount, price, photo, category })
       .then(({ data }) => data);
   }
 
@@ -39,6 +40,13 @@ class Material {
     return this.material
       .post('/photo', file)
       .then(({data}) => data)
+  }
+
+  deleteMaterial(id) {
+    console.log('hey');
+    
+    return this.material.delete(`/${id}/delete`)
+      .then( ({data}) => data);
   }
 
 }

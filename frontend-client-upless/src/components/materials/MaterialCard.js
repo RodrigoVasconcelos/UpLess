@@ -17,10 +17,10 @@ const materialCard = (props) => {
           <Link to={`/material/${props._id}`}>
             <h4>{props.name}</h4>
           </Link>
-          <p>{props.amount}</p>
-          <p>{props.description}</p>
-          <p className="amount">{props.price}</p>
+          <p className="amount">quantity: {props.amount}</p>
+          <p className="description">{props.description}</p>
         </div>
+        <p className="price">{props.price}</p>
       </div>
       <hr/>
     </React.Fragment>

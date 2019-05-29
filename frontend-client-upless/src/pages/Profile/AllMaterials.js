@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { withAuth } from "../../lib/AuthProvider";
-import { Link } from 'react-router-dom';
 
 import Navbar from "../../components/Navbar";
 import UserBar from "../../components/UserBar";
@@ -15,24 +14,34 @@ class AllMaterials extends Component {
     allMaterials: [],
   }
 
+  componentDidMount(){
+    this.getAllMaterials();
+  }
+  
   getAllMaterials = () => {
-    
+    console.log("gettinf all materi")
     Material.getAll()
       .then((data) => {
-        console.log(data);
-        this.setState({ listOfProjects: data })
+        this.setState({ allMaterials: data })
       })
   }
 
   render() {
-    console.log('ddddddddddd', this.props.user)
-    // const { material } = this.props;
+    console.log('ddddddddddd', this.state.allMaterials)
     return (
       <div>
         <Navbar />
 
           <UserBar />
-          {}
+          <div className="bar">
+          <h3>Wall of Wastes</h3>
+          </div>
+          { 
+            this.state.allMaterials.map( (oneMaterial, index) => {
+            return (
+              <MaterialCard key={index} {...oneMaterial}/>
+            )})
+          }
           <ButtonAdd />
         
         <Footer />

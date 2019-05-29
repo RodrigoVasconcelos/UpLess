@@ -3,7 +3,6 @@ import { Switch } from "react-router-dom";
 
 import './styles/App.css'
 
-import Navbar from "./components/Navbar";
 import Private from "./pages/Profile/Private";
 import Signup from "./pages/Auths/Signup";
 import Login from "./pages/Auths/Login";
@@ -16,6 +15,7 @@ import AddMaterialPage from "./pages/Profile/AddMaterialPage";
 import SearchMaterialPage from "./pages/Profile/SearchMaterialPage";
 import AllMaterials from "./pages/Profile/AllMaterials";
 import MaterialProfile from "./pages/Profile/MaterialProfile";
+import EditMaterial from "./components/materials/EditMaterial";
 
 
 class App extends Component {
@@ -32,6 +32,7 @@ class App extends Component {
             <PrivateRoute path="/search-material" component={SearchMaterialPage} />
             <PrivateRoute path="/all-materials" component={AllMaterials} />
             <PrivateRoute path="/material/:id" component={MaterialProfile} />
+            <PrivateRoute path="/:id/edit" component={EditMaterial} />
           </Switch>
         </div>
       </AuthProvider>

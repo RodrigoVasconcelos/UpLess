@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { withAuth } from "../../lib/AuthProvider";
-import material from '../../lib/material-service'
-import icon15 from './../../images/icon-15.png'
+
+import material from '../../lib/material-service';
+
+import icon15 from './../../images/icon-15.png';
+import Categories from "../../data/categories.json";
 
 class AddMaterial extends Component {
   state = {
@@ -11,17 +13,28 @@ class AddMaterial extends Component {
     amount: "", 
     price: "", 
     photo: "",
-    disable: false,
+    category: "",
+
   };
 
+  // componentDidMount(){
+  //   this.setCategories();
+  // }
+
+  // setCategories = () => {
+  //   this.setState({
+  //     categories: Categories,
+  //   })
+  // }
   handleFormSubmit = event => {
     event.preventDefault();
-    const { name, description, amount, price, photo } = this.state;
+    const { name, description, amount, price, photo, category } = this.state;
     console.log(this.state)
-    material.addMaterial({ name, description, amount, price, photo })
+    material.addMaterial({ name, description, amount, price, photo, category })
     .then((newMaterial) => {
       console.log(newMaterial);
     })
+    window.location.href = "/";
   };
 
   handleChange = event => {
@@ -38,14 +51,15 @@ class AddMaterial extends Component {
       console.log(photo)
       this.setState({
         photo,
-        disable: true,
       })
     })
     .catch((error) => console.log(error.response))
   }
 
   render() {
-    const { name, description, amount, price, disable } = this.state;
+    console.log(Categories[0]);
+    
+    const { name, description, amount, price } = this.state;
     return (
       <div className="margin-nav">
 
@@ -85,11 +99,35 @@ class AddMaterial extends Component {
             placeholder="price"
           />
 
-          <input type="file" onChange={this.fileOnchange}></input>
-          {disable ? <input type="submit" disabled></input>: 
-          <button type="submit" value="addMaterial" className="submit-big-button" ><img src={icon15} alt=""/></button>
+          <select name="category" className="grey-button" placeholder="Category" onChange={this.handleChange}>
+            {
+              Object.keys(Categories[0]).forEach( (oneCategory, index) => {
+                return (
+                  <option value={oneCategory}>{oneCategory}</option>
+                )
+                
+              })
 
-          }
+            }
+          </select>
+
+          {/* {
+            this.state.category
+            ? this.state.category.map( (oneCategory) => {
+              return (
+                  <option value={oneCategory}>{oneCategory}</option>
+                
+              )})
+            : null
+          } */}
+
+          <input type="file" onChange={this.fileOnchange} className="grey-button" placeholder="Choose File"></input>
+
+          <div className="submit-big-button" >
+            <button type="submit" value="addMaterial" >
+              <img src={icon15} alt=""/>
+            </button>
+          </div>
 
         </form>
       </div>

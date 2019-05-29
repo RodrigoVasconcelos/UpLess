@@ -19,43 +19,46 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border-bottom: 1px solid lightgray;
   text-align: left;
-  height: 120px;
+  height: 150px;
   padding: 19px 20px 16px;
 }
-
-.user-discription {
+.user-bar .user-discription {
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
   width: 200px;
 }
-
-.user-discription * {
+.user-bar .user-discription * {
   margin: 0;
 }
-
-.user-discription button {
+.user-bar .user-discription button {
   margin: 0;
   padding: 0;
   text-align: left;
 }
-
-.edit-img {
+.user-bar .edit-img {
   justify-content: flex-start;
   width: 30px;
 }
-
-.profile-pic {
+.user-bar .profile-pic {
   background-color: #195467;
   background-size: cover;
   background-repeat: no-repeat;
   border-top-left-radius: 50%;
   border-top-right-radius: 50%;
   border-bottom-left-radius: 50%;
-  width: 130px;
-  height: 130px;
+  box-shadow: 0px 7px 12px -9px #949494;
+  width: 150px;
+  height: 150px;
+}
+
+.bar {
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+}
+.bar h3 {
+  margin: 8px 0;
 }
 
 .material-card {
@@ -74,19 +77,30 @@
   width: 85px;
   height: 85px;
 }
+.material-card .material-description-div {
+  width: 70vw;
+}
 .material-card h4 {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: #2d2d2d;
-  margin: 0;
+  margin: 0 0 3px;
 }
 .material-card p {
   margin: 0;
   color: #646464;
-  margin-left: 5px;
-  margin-bottom: 5px;
 }
 .material-card .amount {
+  font-size: 0.9rem;
+}
+.material-card .price {
   text-align: right;
+  position: relative;
+  align-content: flex-end;
+  bottom: 0;
+}
+.material-card .description {
+  color: #2d2d2d;
+  font-size: 1.1rem;
 }
 
 hr {
@@ -194,6 +208,8 @@ hr {
 }
 .material-profile .material-profile-pic {
   background-color: #195467;
+  background-size: cover;
+  background-repeat: no-repeat;
   margin: 30px auto 25px;
   height: 250px;
   width: 250px;
@@ -222,6 +238,16 @@ hr {
   margin: 0 0 5px;
 }
 
+.AddMaterialPage .question {
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+  margin-top: 240px;
+  margin-bottom: 15px;
+}
+.AddMaterialPage h3 {
+  margin: 8px 0;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -238,20 +264,11 @@ a {
   text-decoration: none;
 }
 
-.submit-big-button {
-  align-items: center;
-  top: 0;
-  display: fleX;
-  justify-content: space-around;
-  position: fixed;
-  margin: 65px auto 0;
-  width: 120px;
-}
-
 .blue-button {
   background-color: #195467;
   border-radius: 13px;
   border: 0;
+  box-shadow: 0px 7px 12px -9px #949494;
   color: white;
   font-weight: bold;
   font-size: 1.2rem;
@@ -260,21 +277,22 @@ a {
   margin: 10px;
 }
 
-.submit-big-button img {
-  margin: auto;
-  width: 100%;
-}
-
 .grey-button {
   background-color: whitesmoke;
   border-radius: 13px;
   border: 1px solid darkgray;
+  box-shadow: 0px 7px 12px -9px #949494;
   color: #505050;
   font-size: 1rem;
   text-align: center;
   height: 30px;
   width: 60%;
   margin: 10px;
+}
+
+select.grey-button {
+  padding-left: 20px;
+  height: 34px !important;
 }
 
 .grey-button a, .blue-button a {
@@ -293,6 +311,7 @@ a {
   justify-content: center;
   position: fixed;
   bottom: 70px;
+  box-shadow: 0px 7px 12px -9px #949494;
   margin: 0 auto;
 }
 
@@ -333,6 +352,29 @@ a {
 .button-add img {
   margin: auto;
   width: 80px;
+}
+
+.submit-big-button {
+  align-items: center;
+  top: 0;
+  display: flex;
+  justify-content: space-around;
+  position: fixed;
+  margin: 80px auto 0;
+  width: 100vw;
+}
+
+.submit-big-button button {
+  width: 150px;
+}
+
+.submit-big-button a {
+  margin: auto;
+}
+
+.submit-big-button img {
+  margin: auto;
+  width: 100%;
 }
 
 /*# sourceMappingURL=App.css.map */

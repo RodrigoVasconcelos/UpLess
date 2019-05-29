@@ -1,23 +1,44 @@
 import React, { Component } from "react";
 import { withAuth } from "../../lib/AuthProvider";
-import { Link } from 'react-router-dom';
+import { GoogleMap } from 'react-google-maps';
 
 import Navbar from "../../components/Navbar";
-import UserBar from "../../components/UserBar";
 import Footer from "../../components/Footer";
 import material from "../../lib/material-service";
+import auth from "../../lib/auth-service"
 
-import ButtonAdd from "../../components/ButtonAdd";
 import EditMaterial from "../../components/materials/EditMaterial";
 
 class MaterialProfile extends Component {
   state = {
-    material: null,
+    currentUser: "",
+    material: "",
     editMaterial: false,
+    sameUser: true,
   }
+  
+    componentDidMount(){
+      auth.me()
+      .then((user) => {
+        this.setState({currentUser: user},()=>{this.getMaterial()})
+      });
+    }
 
-  componentDidMount(){
-    this.getMaterial()
+  sameUser = () => {
+    console.log(this.state.currentUser);
+    const { _id } = this.state.material;
+
+    this.state.currentUser.materials.forEach( (oneMaterial) => {
+      if (oneMaterial._id === _id) {
+        this.setState({
+          sameUser: true
+        })
+      } else {
+        this.setState({
+          sameUser: false
+        })
+      }
+    });
   }
 
   handleEditChange = () => {
@@ -28,51 +49,50 @@ class MaterialProfile extends Component {
 
   getMaterial = () => {
     const { id } = this.props.match.params;
-    console.log(id)
     
     material.getMaterial(id)
       .then((data) => {
-        console.log(data)
         this.setState({
           material: data,
-        })
+        },()=>{this.sameUser()})
       })
   }
   render() {
-    console.log(this.state)
-  
-    //  const imageBackgroundUser = {
-    //   backgroundImage: `url(${this.state.material.photo})`,
-    // }
+    // console.log('---------',this.state.currentUser.materials);
+    // console.log(this.state.currentUser.material.forEach( (oneMaterial) => {return oneMaterial}));
+    console.log(this.state.material._id);
+    console.log('-------',this.state.currentUser);
+    console.log(this.state.sameUser);
+    
+    const imageBackgroundUser = {
+      backgroundImage: `url(${this.state.material.photo})`,
+    }
     return (
       <div>
         <Navbar />
 
         <div className="material-profile">
-          <div className="material-profile-pic" style=
-          {
-            {/* imageBackgroundUser */}
-            }>
+          <div className="material-profile-pic" style={imageBackgroundUser}>
           </div>
           { 
           }
-          <h3>Material
-            {/* {this.state.material.name} */}
-            </h3>
+          <h3>{this.state.material.name}</h3>
           <div className="div-description">
-            <p className="amount">amount</p>
-            <p className="price">price</p>
-            <p className="description">description</p>
+            <p className="amount">{this.state.material.amount}</p>
+            <p className="price">{this.state.material.price}</p>
+            <p className="description">{this.state.material.description}</p>
           </div>
 
         </div>
 
         {
-          this.state.editMaterial
-          ? <EditMaterial />
-          :<div className="display-edit">
-            <button className="blue-button edit-button" onClick={this.handleEditChange}>Edit</button>
-          </div>
+          this.state.sameUser
+            ?this.state.editMaterial
+              ? <EditMaterial material={ this.state.material }/>
+              :<div className="display-edit">
+                <button className="blue-button edit-button" onClick={this.handleEditChange}>Edit</button>
+              </div>
+            :null
         }
 
         <Footer />

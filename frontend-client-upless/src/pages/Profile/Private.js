@@ -29,7 +29,9 @@ class Private extends Component {
         <Navbar />
 
           <UserBar />
-          <h3>My Wastes</h3>
+          <div className="bar">
+            <h3>My Wastes</h3>
+          </div>
           { 
             currentUser ? currentUser.materials.map( (oneMaterial, index) => {
             return (

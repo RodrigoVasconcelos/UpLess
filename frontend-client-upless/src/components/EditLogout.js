@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { withAuth } from "../lib/AuthProvider";
 
-import icon12 from './../images/icon-12.png';
-
 class EditLogout extends Component {
   state = {
     edit: true,
@@ -12,13 +10,30 @@ class EditLogout extends Component {
     description: "",
     email: "", 
     pictureUrl: "",
-    disable: false,
+    disable: true,
   };
 
   handleFormSubmit = event => {
     event.preventDefault();
     const { username, password, description, email, pictureUrl } = this.state;
-    this.props.signup({ username, password, description, email, pictureUrl });
+
+    if (username !== "") {
+      this.props.update({ username });
+    } 
+    if (password !== "") {
+      this.props.update({ password });
+    } 
+    if (description !== "") {
+      this.props.update({ description });
+    } 
+    if (email !== "") {
+      this.props.update({ email });
+    } 
+    if (pictureUrl !== "") {
+      this.props.update({ pictureUrl });
+    } 
+
+    document.location.reload(true);
   };
 
   handleChange = event => {
@@ -30,7 +45,6 @@ class EditLogout extends Component {
     const file = event.target.files[0];
     const uploadData = new FormData()
     uploadData.append('photo', file)
-    console.log(uploadData);
     this.props.imageUpload(uploadData,console.log('heyyyyyyyyy', uploadData))
     .then((pictureUrl) => {
       this.setState({

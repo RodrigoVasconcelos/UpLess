@@ -1,29 +1,53 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { withAuth } from "../../lib/AuthProvider";
 import material from '../../lib/material-service'
-import icon15 from './../../images/icon-15.png'
+
+import Categories from "../../data/categories.json";
 
 class EditMaterial extends Component {
   state = {
+    material:"",
     name: "",
     description: "",
     amount: "", 
     price: "", 
     photo: "",
+    category: "",
     disable: false,
   };
+
+  componentDidMount(){
+    this.setState({material: this.props.material})
+  }
 
   handleFormSubmit = event => {
     event.preventDefault();
     const { name, description, amount, price, photo } = this.state;
-    console.log(this.state)
-    material.addMaterial({ name, description, amount, price, photo })
-    .then((newMaterial) => {
-      console.log(newMaterial);
-    })
-  };
+      console.log('nnnnnnnnnnnn',this.props.material)
+      if (name !== "") {
+       console.log(this.state.material);
+        material.update({ name });
+      } 
+      if (description !== "") {
+        material.update({ description });
+      } 
+      if (description !== "") {
+        material.update({ description });
+      } 
+      if (amount !== "") {
+        material.update({ amount });
+      } 
+      if (price !== "") {
+        material.update({ price });
+      } 
+      if (photo !== "") {
+        material.update({ photo });
+      } 
 
+    console.log(name, description, amount, price, photo)
+
+      // document.location.reload(true);
+    };
+    
   handleChange = event => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
@@ -44,8 +68,16 @@ class EditMaterial extends Component {
     .catch((error) => console.log(error.response))
   }
 
+  deleteMaterial = () => {
+    const _id = this.state.material._id
+    material.deleteMaterial(_id);
+    window.location.href = "/";
+  }
+
   render() {
-    const { name, description, amount, price, disable } = this.state;
+    console.log('sssss',this.props);
+    console.log('sssss',this.state);
+    const { name, description, amount, price, category, disable } = this.state;
     return (
       <div className="margin-nav">
 
@@ -85,6 +117,18 @@ class EditMaterial extends Component {
             placeholder="price"
           />
 
+          <select name="category" className="grey-button" placeholder="Category" onChange={this.handleChange}>
+            {
+              Object.keys(Categories[0]).map( (oneCategory, index) => {
+                return (
+                  <option value={oneCategory}>{oneCategory}</option>
+                )
+                
+              })
+
+            }
+          </select>
+
           <input type="file" onChange={this.fileOnchange}></input>
           {disable ? <input type="submit" disabled></input>: 
           <button type="submit" value="addMaterial" className="blue-button" >Edit</button>
@@ -92,9 +136,10 @@ class EditMaterial extends Component {
           }
 
         </form>
+        <button type="button" value="deleteMaterial" className="blue-button" onClick={this.deleteMaterial}>Delete</button>
       </div>
     );
   }
 }
 
-export default withAuth(EditMaterial);
+export default EditMaterial;
